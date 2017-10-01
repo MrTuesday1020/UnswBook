@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xsi:schemaLocation="
+        http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context 
+        http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/mvc
+        http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+        
+    <mvc:annotation-driven />
+	<mvc:resources mapping="/resources/**" location="/resources/" />
+
+	<context:annotation-config />
+	<context:component-scan base-package="unswbook">
+		<context:include-filter type="annotation"
+			expression="org.springframework.stereotype.Controller" />
+	</context:component-scan>
+	<context:property-placeholder location="WEB-INF/jdbc.properties" />
+
+	<!-- interceptors -->
+	<mvc:interceptors>
+		<mvc:interceptor>
+			<mvc:mapping path="/user/*" />
+			<mvc:exclude-mapping path="/user/login"/>
+			<mvc:exclude-mapping path="/user/register"/>
+			<bean class="unswbook.interceptor.UserInterceptor"></bean>
+		</mvc:interceptor>
+		
+		<mvc:interceptor>
+			<mvc:mapping path="/admin/*" />
+			<mvc:exclude-mapping path="/admin/login"/>
+			<bean class="unswbook.interceptor.AdminInterceptor"></bean>
+		</mvc:interceptor>
+	</mvc:interceptors>
+
+
+	<!-- Service -->
+	<bean id="adminService" class="unswbook.service.impl.AdminServiceImpl" />
+	<bean id="userService" class="unswbook.service.impl.UserServiceImpl" />
+	<bean id="messageService" class="unswbook.service.impl.MessageServiceImpl" />
+
+
+	<!-- Dao -->
+	<bean id="adminDao" class="unswbook.dao.impl.AdminDaoImpl" />
+	<bean id="userDao" class="unswbook.dao.impl.UserDaoImpl" />
+	<bean id="messageDao" class="unswbook.dao.impl.MessageDaoImpl" />
+
+
+	<!-- database connection -->
+	<bean id="dataSource"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="${driver}" />
+		<property name="url" value="${url}" />
+		<property name="username" value="${username}" />
+		<property name="password" value="${password}" />
+	</bean>
+
+	<!-- jdbcTemplate -->
+	<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+	
+
+
+	<!-- view -->
+	<bean
+		class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver">
+		<property name="order" value="1" />
+		<property name="mediaTypes">
+			<map>
+				<entry key="json" value="application/json" />
+				<entry key="xml" value="application/xml" />
+				<entry key="htm" value="text/html" />
+			</map>
+		</property>
+	</bean>
+
+	<!-- user -->
+	<mvc:view-controller path="/" view-name="login" />
+	<mvc:view-controller path="/login" view-name="login" />
+	<mvc:view-controller path="/register" view-name="register" />
+	<mvc:view-controller path="/user/edit" view-name="editProfile" />
+	<mvc:view-controller path="/user/profile" view-name="profile" />
+	<mvc:view-controller path="/user/password" view-name="password" />
+	<mvc:view-controller path="/user/photo" view-name="photo" />
+	<mvc:view-controller path="/user/toAdvSearch" view-name="advSearch" />
+	
+	<!-- admin -->
+	<mvc:view-controller path="/admin" view-name="adminLogin" />
+	<mvc:view-controller path="/admin/" view-name="adminIndex" />
+	<mvc:view-controller path="/admin/index" view-name="adminIndex" />
+
+	<bean
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="viewClass"
+			value="org.springframework.web.servlet.view.JstlView" />
+		<property name="prefix" value="/WEB-INF/view/" />
+		<property name="suffix" value=".jsp" />
+	</bean>
+
+
+	<!-- upload file -->
+	<bean id="multipartResolver"
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<property name="maxUploadSize" value="209715200" />
+		<property name="defaultEncoding" value="UTF-8" />
+		<property name="resolveLazily" value="true" />
+	</bean>
+
+</beans>
