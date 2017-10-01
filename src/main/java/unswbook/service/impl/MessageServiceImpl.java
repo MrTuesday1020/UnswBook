@@ -60,4 +60,9 @@ public class MessageServiceImpl implements MessageService {
 		
 		return messages;
 	}
+
+	@Override
+	public void postMessage(Message message) {
+		messageDao.postMessage(message);
+	}
 }

@@ -20,6 +20,8 @@ public interface UserDao {
 	
 	ArrayList<User> findFriendsById(Integer ID);
 	
+	ArrayList<User> findUserByMessageId(Integer messageid);
+	
 	boolean validUser(User user);
 	
 	boolean updateUser(User user);
@@ -57,5 +59,7 @@ public interface UserDao {
 	Integer findLikeID(Integer myid, Integer messageid);
 
 	void dislike(Integer likeid);
+
+	void confirmRegister(Integer userid);
 
 }

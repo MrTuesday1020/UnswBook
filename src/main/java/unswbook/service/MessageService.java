@@ -13,4 +13,6 @@ public interface MessageService {
 	ArrayList<Message> findAllMessages();
 	
 	ArrayList<Message> findAllMessagesByUserID(Integer id);
+
+	void postMessage(Message message);
 }

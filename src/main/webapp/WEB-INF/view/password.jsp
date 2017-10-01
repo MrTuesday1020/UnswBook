@@ -4,24 +4,26 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>Change Password</title>
+<link rel="stylesheet"
+	href="<%=request.getContextPath()%>/resources/css/login.css">
 </head>
 <body>
-
-	<form name="changePwd"
-		action="<%=request.getContextPath()%>/user/changePwd" method="post">
-		<div>
-			<span>New Password:</span>
-			<input type="text" id="password" name="password" required>
-		</div>
-		<div>
-			<span>Confirm Password:</span>
-			<input type="text" id="conPassword" name="conPassword" required>
-		</div>
-		<div>
-			<input type="submit" id="changePwd" value="Change Password" />
-		</div>
-	</form>
-
+	<div class="center" align="center">
+		<form name="changePwd"
+			action="<%=request.getContextPath()%>/user/changePwd" method="post">
+			<p></p>
+			<input type="password" class="text" id="password" name="password"
+				placeholder="New Password" required>
+			<p></p>
+			<input type="password" class="text" id="conPassword"
+				name="conPassword" placeholder="Comfirm New Password" required>
+			<p></p>
+			<br> <input type="submit" id="changePwd"
+				style="width: 200px; height: 35px padding-left:5px;"
+				class="signbutton" value="Change Password" />
+			<p></p>
+		</form>
+	</div>
 </body>
 </html>

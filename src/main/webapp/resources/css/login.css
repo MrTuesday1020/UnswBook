@@ -1,5 +1,10 @@
 @charset "UTF-8";
 
+p.obique {
+    font-style: oblique;
+    color: #2296F1
+}
+
 body {
 	background-color: #F8F8F8;
 }
@@ -12,11 +17,10 @@ div {
 	position: absolute;
 	margin-top: 16px;
     margin-bottom: 16px;
-    padding: 10px 0;
+    padding: 10px 20px;
     top: 10%;
     width: 30%;
     left: 35%;
-    height: 50%;
 }
 
 b {
@@ -66,4 +70,15 @@ b {
     font-size: 16px;
     border: 1px solid #efefef;
     background: #fafafa;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+    margin: 10%;
+}
+
+th, td {
+    padding: 8px;
+    text-align: left;
 }

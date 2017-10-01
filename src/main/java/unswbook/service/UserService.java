@@ -2,6 +2,7 @@ package unswbook.service;
 
 import java.util.ArrayList;
 
+import unswbook.model.Message;
 import unswbook.model.User;
 
 public interface UserService {
@@ -43,4 +44,8 @@ public interface UserService {
 	void like(Integer myid, Integer messageid);
 
 	void dislike(Integer myid, Integer messageid);
+
+	ArrayList<User> findUserByMessageId(Integer messageid);
+
+	void confirmRegister(Integer userid);
 }

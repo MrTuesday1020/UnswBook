@@ -150,6 +150,28 @@ public class UserDaoImpl implements UserDao {
 		}
 	}
 	
+	public ArrayList<User> findUserByMessageId(Integer messageid) {
+		String sql = "SELECT * FROM User,Message Where Message.ID = " + messageid + " and Message.UserID = User.ID;";
+		Connection connection = null;
+		ArrayList<User> users = new ArrayList<User>();
+		try {
+			connection = dataSource.getConnection();
+			PreparedStatement ps = connection.prepareStatement(sql);
+			ResultSet rs = ps.executeQuery();
+			users = RsToUser(rs);
+			return users;
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		} finally {
+			if (connection != null) {
+				try {
+					connection.close();
+				} catch (SQLException e) {
+				}
+			}
+		}
+	}
+	
 	public boolean updateUser(User user) {
 		String sql = "UPDATE User SET Name = ? , Gender = ? , DoB = ? , Email = ? WHERE Username = ?";
 		Connection connection = null;
@@ -183,7 +205,6 @@ public class UserDaoImpl implements UserDao {
 	public boolean insertUser(User user) {
 		String sql = "INSERT INTO User (Username, Password, Email, Active, Status) VALUES (?, ?, ?, ?, ?)";
 		Connection connection = null;
-
 		try {
 			connection = dataSource.getConnection();
 			PreparedStatement ps = connection.prepareStatement(sql);
@@ -191,7 +212,7 @@ public class UserDaoImpl implements UserDao {
 			ps.setString(2, user.getPassword());
 			ps.setString(3, user.getEmail());
 			ps.setInt(4, 1);
-			ps.setInt(5, 1);
+			ps.setInt(5, 0);
 			int result = ps.executeUpdate();
 			ps.close();
 			if (result == 1) {
@@ -659,6 +680,27 @@ public class UserDaoImpl implements UserDao {
 		try {
 			connection = dataSource.getConnection();
 			PreparedStatement ps = connection.prepareStatement(sql);
+			ps.executeUpdate();
+			ps.close();
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		} finally {
+			if (connection != null) {
+				try {
+					connection.close();
+				} catch (SQLException e) {}
+			}
+		}
+	}
+
+	public void confirmRegister(Integer userid) {
+		String sql = "UPDATE User SET Status = ? WHERE ID = ?";
+		Connection connection = null;
+		try {
+			connection = dataSource.getConnection();
+			PreparedStatement ps = connection.prepareStatement(sql);
+			ps.setInt(1, 1);
+			ps.setInt(2, userid);
 			ps.executeUpdate();
 			ps.close();
 		} catch (SQLException e) {

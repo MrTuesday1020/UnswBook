@@ -26,6 +26,7 @@
 			<mvc:mapping path="/user/*" />
 			<mvc:exclude-mapping path="/user/login"/>
 			<mvc:exclude-mapping path="/user/register"/>
+			<mvc:exclude-mapping path="/user/doconfirm"/>
 			<bean class="unswbook.interceptor.UserInterceptor"></bean>
 		</mvc:interceptor>
 		
@@ -87,6 +88,7 @@
 	<mvc:view-controller path="/user/password" view-name="password" />
 	<mvc:view-controller path="/user/photo" view-name="photo" />
 	<mvc:view-controller path="/user/toAdvSearch" view-name="advSearch" />
+	<mvc:view-controller path="/user/post" view-name="post" />
 	
 	<!-- admin -->
 	<mvc:view-controller path="/admin" view-name="adminLogin" />

@@ -22,7 +22,7 @@ public class Email {
 
 		Session session = Session.getInstance(prop);
 		Transport ts = session.getTransport();
-		ts.connect("smtp.qq.com", "UnswBook", "xzukkpyasgukcaec");
+		ts.connect("smtp.qq.com", "415563026", "xzukkpyasgukcaec");
 		Message message = createSimpleMail(session, address, subject, contnet);
 		ts.sendMessage(message, message.getAllRecipients());
 		ts.close();

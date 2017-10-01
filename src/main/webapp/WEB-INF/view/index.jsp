@@ -11,6 +11,7 @@
 	<div>
 		<a href="<%=request.getContextPath()%>/user/profile">Profile</a>
 		<a href="<%=request.getContextPath()%>/user/notice">Notice</a>
+		<a href="<%=request.getContextPath()%>/user/post">Post</a>
 	</div>
 	
 	<div>
@@ -36,7 +37,7 @@
 			<c:if test="${not empty message.image}">
 				<div>
 					<img
-						src="<%=request.getContextPath()%>/resources/messageImgs/${message.message}"
+						src="<%=request.getContextPath()%>/resources/messageImgs/${message.image}"
 						height="42" width="42" />
 				</div>
 			</c:if>

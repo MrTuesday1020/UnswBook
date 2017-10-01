@@ -136,5 +136,31 @@ public class MessageDaoImpl implements MessageDao {
 			}
 		}
 	}
+
+	public void postMessage(Message message) {
+		String sql = null;
+		if(message.getImage() == null)
+			sql = "INSERT INTO Message (UserID, Text) VALUES (" + message.getUserid() + ", '" + message.getText() + "')";
+		else if(message.getText() == null)
+			sql = "INSERT INTO Message (UserID, Image) VALUES (" + message.getUserid() + ", '" + message.getImage() + "')";
+		else 
+			sql = "INSERT INTO Message (UserID, Text , Image) VALUES (" + message.getUserid() + ", '" + message.getText() + "', '" + message.getImage() + "')";
+		Connection connection = null;
+		try {
+			connection = dataSource.getConnection();
+			PreparedStatement ps = connection.prepareStatement(sql);;
+			ps.executeUpdate();
+			ps.close();
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		} finally {
+			if (connection != null) {
+				try {
+					connection.close();
+				} catch (SQLException e) {
+				}
+			}
+		}
+	}
 	
 }

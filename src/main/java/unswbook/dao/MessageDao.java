@@ -13,5 +13,7 @@ public interface MessageDao {
 	ArrayList<Message> findAllMessagesByUserID(String ids);
 	
 	ArrayList<Message> findLikedMessages(Integer id);
+
+	void postMessage(Message message);
 	
 }

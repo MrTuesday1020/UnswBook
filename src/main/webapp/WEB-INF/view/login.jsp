@@ -4,6 +4,8 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet"
+	href="<%=request.getContextPath()%>/resources/css/login.css">
 <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/login.css">
 <title>Insert title here</title>
 </head>
@@ -29,6 +31,7 @@
 		<p></p>
 		<b>Don't have an account? <font size="3" color="#000099"><a
 				href="<%=request.getContextPath()%>/register">Sign up</a></font></b>
+		<p></p>
 	</div>
 </body>
 </body>

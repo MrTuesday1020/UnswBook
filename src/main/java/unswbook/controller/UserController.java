@@ -35,18 +35,24 @@ public class UserController {
 	MessageService messageService;
 	
 	@RequestMapping(value="/login", method = RequestMethod.POST)
-	public String Login(@ModelAttribute User user, ModelMap model) {
+	public String login(@ModelAttribute User user, ModelMap model) {
 		boolean login = userService.loginUser(user);
 		
 		if(login) {
 			User userSession = userService.findUserByUsernameStrict(user.getUsername()).get(0);
-			if(userSession.getActive() == 1) {
+			if(userSession.getActive() == 1 && userSession.getStatus() == 1) {
 				userSession.setPassword(null);
 				model.put("userSession", userSession);
 				return "redirect:index";
 			}
-			else {
+			else if(userSession.getActive() == 0 && userSession.getStatus() == 1){
 				return "banned";
+			}
+			else if(userSession.getActive() == 1 && userSession.getStatus() == 0) {
+				return "confirm";
+			}
+			else {
+				return "login";
 			}
 		}
 		else {
@@ -55,7 +61,7 @@ public class UserController {
 	}
 	
 	@RequestMapping(value="/register", method = RequestMethod.POST)
-	public String Register(@ModelAttribute User user, ModelMap model) {
+	public String register(@ModelAttribute User user) {
 
 		boolean registered = userService.registerUser(user);
 		
@@ -63,11 +69,31 @@ public class UserController {
 			return "register";
 		}
 		else {
-			User userSession = userService.findUserByUsernameStrict(user.getUsername()).get(0);
-			userSession.setPassword(null);
-			model.put("userSession", userSession);
-			return "editProfile";
+			User newuser = userService.findUserByUsernameStrict(user.getUsername()).get(0);
+
+			Integer userid = newuser.getId();
+			String address = newuser.getEmail();
+			
+			Email mail = new Email();
+			try {
+				mail.sendEmail(address,"Confirm registration!","Please confirm your registration by using this url:http://localhost:8080/ass2/user/doconfirm?id=" + userid);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			
+			return "confirm";
 		}
+	}
+	
+	@RequestMapping(value="/doconfirm", method = RequestMethod.GET)
+	public String doconfirm(HttpServletRequest request, ModelMap model) {
+		Integer userid = Integer.valueOf(request.getParameter("id"));
+		userService.confirmRegister(userid);
+		User userSession = userService.findUserByID(userid).get(0);
+		userSession.setPassword(null);
+		model.put("userSession", userSession);
+		
+		return "editProfile";
 	}
 	
 	@RequestMapping(value="/index")
@@ -147,7 +173,6 @@ public class UserController {
 					String oldphoto = imgpath + "/" + userSession.getPhoto();
 					File old = new File(oldphoto);
 					if (old.exists()) {
-			            System.out.println("yes");
 			            old.delete();
 			        }
 				}
@@ -196,13 +221,12 @@ public class UserController {
 		
 		userService.addFriend(myid, userid);
 		
-		String address = "389203074@qq.com";
+		String address = userService.findFriendsByID(userid).get(0).getEmail();
 		
 		Email mail = new Email();
 		try {
 			mail.sendEmail(address,"Friend Request","User " + userSession.getUsername() + " sends you a friend request!");
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
@@ -285,6 +309,17 @@ public class UserController {
 		
 		userService.like(myid, messageid);
 		
+		ArrayList<User> users = userService.findUserByMessageId(messageid);
+		
+		String address = users.get(0).getEmail();
+				
+		Email mail = new Email();
+		try {
+			mail.sendEmail(address,"Cheers","User " + userSession.getUsername() + " liked your post! Go to check it!");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
 		return "redirect:index";
 	}
 	
@@ -300,4 +335,29 @@ public class UserController {
 		return "redirect:index";
 	}
 	
+	@RequestMapping(value="/postMessage", method=RequestMethod.POST)
+	public String postMessage(HttpServletRequest request, @RequestParam("image") MultipartFile image, ModelMap model) throws IOException{
+		
+		Message message = new Message();
+		User userSession = (User)request.getSession().getAttribute("userSession");
+		Integer userid = userSession.getId();
+		String text = request.getParameter("text");
+		
+		message.setUserid(userid);
+		if(!text.equals(""))
+			message.setText(text);
+		
+		String thisImage = null;
+		if(!image.isEmpty()){
+			thisImage = System.currentTimeMillis() + image.getOriginalFilename();
+			message.setImage(thisImage);
+		}
+		
+		messageService.postMessage(message);
+		if(!image.isEmpty()){
+			String imgpath = request.getSession().getServletContext().getRealPath("/resources/messageImgs");
+			FileUtils.copyInputStreamToFile(image.getInputStream(), new File(imgpath, thisImage));
+		}
+		return "redirect:index";
+	}
 }

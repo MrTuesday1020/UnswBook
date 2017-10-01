@@ -9,6 +9,7 @@ import java.util.Date;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import unswbook.dao.UserDao;
+import unswbook.model.Message;
 import unswbook.model.User;
 import unswbook.service.UserService;
 
@@ -180,6 +181,14 @@ public class UserServiceImpl implements UserService{
 	public void dislike(Integer myid, Integer messageid) {
 		Integer likeid = userDao.findLikeID(myid, messageid);
 		userDao.dislike(likeid);
+	}
+
+	public ArrayList<User> findUserByMessageId(Integer messageid) {
+		return userDao.findUserByMessageId(messageid);
+	}
+
+	public void confirmRegister(Integer userid) {
+		userDao.confirmRegister(userid);
 	}
 
 }
