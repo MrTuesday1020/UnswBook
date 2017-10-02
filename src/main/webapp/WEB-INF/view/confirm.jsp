@@ -4,9 +4,14 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>Register Confirm</title>
+<link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/login.css">
 </head>
 <body>
-Please check your email to confirm the registration!
+	<div class="center" align="center">
+		<br>
+		<center>Please check your email to confirm the registration!</center>
+		<br>
+	</div>
 </body>
 </html>

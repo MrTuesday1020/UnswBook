@@ -5,21 +5,28 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>Search Result</title>
+<link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/result.css">
 </head>
 <body>
+<%@ include file="head.jsp" %>
 	<c:forEach items="${users}" var="user">
-		<div style="margin-top: 40px;">
-			<div>Username: ${user.username}</div>
-			<div>Email: ${user.email}</div>
-			<div>Name: ${user.name}</div>
+		<div id="out_layer">
+		<div id="photo_layer" onclick="javascript:location.href='<%=request.getContextPath()%>/user/userProfile?id=${user.id}'">
+    			<img src="<%=request.getContextPath()%>/resources/userPhotos/${user.photo}" width="200" height="200"/>
+   		</div>
+   		<span id="info_layer">
+			<p>Username: ${user.username}</p>
+			<p>Email: ${user.email}</p>
+			<p>Name: ${user.name}</p>
 			<c:if test="${user.gender eq 'm'}">
-				<div>Gender: Male</div>
+				<p>Gender: Male</p>
 			</c:if>
 			<c:if test="${user.gender eq 'f'}">
-				<div>Gender: Female</div>
+				<p>Gender: Female</p>
 			</c:if>
-			<div>BoB: ${user.dob}</div>
+			<p>BoB: ${user.dob}</p>
+		</span>
 		</div>
 	</c:forEach>
 </body>

@@ -1,0 +1,48 @@
+@charset "UTF-8";
+
+body {
+	background-color: #F8F8F8;
+}
+
+#out_layer {
+	border-radius: 1px;
+	border: 1px solid #e6e6e6;
+	margin-top: 16px;
+    margin-bottom: 16px;
+    padding: 10px 0px;
+    
+    line-height:100px;
+    background-color:white;
+    height:450px;
+    width:50%;
+    left:25%;
+    padding:5px;
+    position:relative;
+}
+
+
+
+#photo_layer{
+    line-height:100px;
+    background-color:darkgray;
+    height:200px;
+    width:200px;
+    float: left;
+    padding:5px;
+    margin: 50px 40px;
+}
+
+#info_layer{
+    line-height:40px;
+    background-color: WHITE;
+    height:360px;
+    width:340px;
+    float: left;
+    padding:5px;
+}
+
+p {
+	padding-left:10%; 
+	padding-top: 10%;
+	font-weight: bold;
+}

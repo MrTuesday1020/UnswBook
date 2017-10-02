@@ -37,6 +37,7 @@
 <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/profile.css">
 </head>
 <body>
+<%@ include file="head.jsp" %>
  <div class="main">
   <div id="out_layer" class="position">
    <div id="photo_layer">
@@ -50,21 +51,15 @@
     <c:if test="${userSession.gender eq 'f'}"><p>Gender: Female</p></c:if>
     <p>DoB: ${userSession.dob}</p>
    </span>
-  </div>
-  
-   <div>
- <a href="<%=request.getContextPath()%>/user/index">
-    <input type="submit" name="edit" class="signbutton" value="Home"></a>
+
    <a href="<%=request.getContextPath()%>/user/edit">
 	<input type="submit" name="edit" class="signbutton" value="Edit Profile"></a>
    <a href="<%=request.getContextPath()%>/user/password">
 	<input type="submit" name="change_password" class="signbutton" value="Change Password" /></a>
    <a href="<%=request.getContextPath()%>/user/photo">
 	<input type="submit" name="change_photo" class="signbutton" value="Change Photo" /></a>
-</div>
-  
+   
+  </div>
  </div>
- 
-
 </body>
 </html>

@@ -35,8 +35,6 @@ body {background-color: #F8F8F8 }
 	position: relative;
 	left: 30px;
 	font-size: 200%;
-	font-style: oblique;
-
 }
 
 .header .button {
@@ -66,15 +64,27 @@ body {background-color: #F8F8F8 }
 	/*font-family: Arial, Helvetica, sans-serif;*/
 	/*!*font-size:14px;*!*/
 	position: relative;
-	top: 35px;
-	left: 30%;
+	top: 25px;
+	left: 20%;
+	height: 30px;
+	font-size: 16px;
 	border:1px solid #626567;
 	border-top-left-radius: 5px 5px;
 	border-bottom-left-radius: 5px 5px;
 	border-bottom-right-radius: 5px 5px;
 	border-top-right-radius: 5px 5px;
 	background: #F8F8F8;
+	padding:10px;
+	align-items: center;
+    border-radius: 3px;
+    box-sizing: border-box;
+    color: #262626;
 
+}
+
+.header .image {
+	width:30px;
+	height: 30px;
 }
 
 

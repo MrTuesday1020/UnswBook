@@ -37,16 +37,17 @@
 
 </head>
 <body>
+<%@ include file="head.jsp" %>
 <div class="main">
 	<div id="out_layer" class="position">
 		<div id="change_layer">
 			<form action="<%=request.getContextPath()%>/user/uploadPhoto" enctype="multipart/form-data" method="post" >
 				<div id="image_layer">
-					<img id="blah" src="#" alt="your image" height="380px" width="380px"/>
+					<img id="blah" src="#" height="380px" width="380px"/>
 				</div>
-				<input type='file' id="left" style="left:500px;top:100px;font-size:14px" onchange="readURL(this);" name="photo"/>
+				<input type='file' id="left" style="left:400px;top:100px;font-size:16px" onchange="readURL(this);" name="photo"/>
 				<p></p>
-				<input type="submit" id="left" class="signbutton" value="Submit" />
+				<input type="submit" id="left" style="left:420px;font-size:14px" class="signbutton" value="Submit" />
 			</form>
         	</div>
 	</div>

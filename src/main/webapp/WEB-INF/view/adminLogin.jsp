@@ -4,23 +4,26 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+    <title>AdminLogin</title>
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/login.css"> 
 </head>
 <body>
-
-	<form name="adminLogin" action="<%=request.getContextPath()%>/admin/login" method="post">
-		<div>
-			<span>Username:</span><input type="text" id="Username"
-				name="Username">
-		</div>
-		<div>
-			<span>Password:</span><input type="text" id="Password"
-				name="Password">
-		</div>
-		<div>
-			<input type="submit" id="Login" value="Login" />
-		</div>
+	<div align="center">
+		<center><h1> UNSW Book</h1></center>
+		<p></p>
+		<form name="adminLogin" action="<%=request.getContextPath()%>/admin/login" method="post">
+			<input class="text" type="text"  id="username" name="username" placeholder="Username" required>
+			<p></p>
+			<input class="text" type="password" id="password" name="password" placeholder="Password" required>
+			<p></p>
+			<input type="submit" id="Login" name="submit" class="signbutton" value="Log in" />
 	</form>
-
+	<p></p>
+</div>
 </body>
 </html>
+
+
+
+
+

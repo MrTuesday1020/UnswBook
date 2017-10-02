@@ -4,7 +4,7 @@
 
 /*-----like css------*/
 .heart {
-    background: url(web_heart_animation.png);
+    background: url(../images/web_heart_animation.png);
     background-position: left;
     background-repeat: no-repeat;
     height: 50px;
@@ -56,19 +56,19 @@ animation-timing-function: steps(28);
     float: left;
     padding:5px;
 }
+
 #top_layer{
     background-color:white;
-    height:80px;
+    height:120px;
     width:700px;
     float: left;
     padding:0px;
 }
 #top_image{
     line-height: 100px;
-
-    background-color:red;
+    background-color:grey;
     height:120px;
-    width:150px;
+    width:120px;
     float: left;
     padding:0px;
 }
@@ -82,9 +82,10 @@ animation-timing-function: steps(28);
 }
 #middle_layer{
     line-height:20px;
-    background-color:white;
-    height:80%;
-    width:100%;
+    background-color:grey;
+
+    height: 580px;
+    width: 700px;
     float: none;
     padding:0px;
 }

@@ -4,25 +4,22 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Register</title>
-<link rel="stylesheet"
-	href="<%=request.getContextPath()%>/resources/css/login.css">
+<title>Edit Profile</title>
+<link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/profile.css">
 </head>
 <body>
-	<div class="center" align="center">
+	<%@ include file="head.jsp" %>
+	<div class="div_layer" align="center">
 		<p></p>
-		<form name="editProfile"
-			action="<%=request.getContextPath()%>/user/editProfile" method="post">
+		<form name="editProfile" action="<%=request.getContextPath()%>/user/editProfile" method="post">
 			<table>
 				<tr>
 					<td>Email:</td>
-					<td><input class="text" type="text" id="email" name="email"
-						value="${userSession.email}"></td>
+					<td><input class="text" type="text" id="email" name="email" value="${userSession.email}"></td>
 				</tr>
 				<tr>
-					<td>Nickname:</td>
-					<td><input class="text" type="text" id="name" name="name"
-						value="${userSession.name}"></td>
+					<td>Name:</td>
+					<td><input class="text" type="text" id="name" name="name" value="${userSession.name}"></td>
 				</tr>
 				<tr>
 					<td>Gender:</td>
@@ -33,14 +30,11 @@
 				</tr>
 				<tr>
 					<td>Birthday:</td>
-					<td><input class="text" type="text" id="dob" name="dob"
-						placeholder="YYYY-MM-DD" value="${userSession.dob}">
+					<td><input class="text" type="text" id="dob" name="dob" placeholder="YYYY-MM-DD" value="${userSession.dob}">
 					<td>
 				</tr>
 			</table>
-			<input type="submit" id="editProfile" name="submit"
-				style="width: 230px; height: 35px padding-left:5px;"
-				class="signbutton" value="Submit" />
+			<input type="submit" id="editProfile" name="submit" class="signbutton" style="width:200px" value="Submit" />
 		</form>
 		<p></p>
 	</div>

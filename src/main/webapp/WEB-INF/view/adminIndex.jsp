@@ -4,22 +4,27 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>AdminSearch</title>
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/profile.css">
 </head>
+
 <body>
-	<div>
-		<a href="<%=request.getContextPath()%>/admin/findAllUsers">AllUsers</a>
-	</div>
+
+	<div class="div_layer" style="top: 10%;" align="center">
 
 	<form action="<%=request.getContextPath()%>/admin/findUsers" method="post">
-			<input type="text" name="keywords" placeholder="search for customers" required> 
+			<input type="text" class="text" name="keywords" placeholder="search for customers" required> 
 			<select name="selection">
 				<option value="username">Username</option>
 				<option value="email">Email</option>
 				<option value="name">Name</option>
 			</select>
-			<input type="submit" value="Search Users">
+	<input type="submit"  class="signbutton" style="width:150px; position:relative; right:100px; top:50px; " value="Search Users" />
 	</form>
-
+	<a href="<%=request.getContextPath()%>/admin/findAllUsers" >
+	<input type="submit"  class="signbutton" style="width:150px; position:relative; left:80px; top:15px;" value="All Users" />
+	</a>
+	<p></p>
+	</div>
 </body>
 </html>

@@ -7,6 +7,7 @@
 <title>Register</title>
 <link rel="stylesheet"
 	href="<%=request.getContextPath()%>/resources/css/login.css">
+<script src="<%=request.getContextPath()%>/resources/js/main.js"></script>
 </head>
 <body>
 	<div class="center" align="center">
@@ -15,22 +16,20 @@
 		</center>
 		<p class="obique">Find your friends in UNSW</p>
 		<form name="doRegister"
-			action="<%=request.getContextPath()%>/user/register" method="post">
+			action="<%=request.getContextPath()%>/user/register" method="post" onsubmit="return form_onsubmit()">
 			<input class="text" type="text" id="username" name="username"
 				placeholder="Username" required>
 			<p></p>
 			<input class="text" type="email" id="email" name="email"
 				placeholder="Email" required>
 			<p></p>
-			<input class="text" type="text" id="password" name="password"
+			<input class="text" type="password" id="password" name="password"
 				placeholder="Password" required>
 			<p></p>
-			<input class="text" type="text" id="ConPassword" name="ConPassword"
-				placeholder="Confirm your password" required>
+			<input class="text" type="password" id="conPassword" name="conPassword"
+				placeholder="Confirm Password" required>
 			<p></p>
-			<input type="submit" id="Register" name="submit"
-				style="width: 230px; height: 35px padding-left:5px;"
-				class="signbutton" value="Sign up" />
+			<input type="submit" id="Register" name="submit"	class="signbutton" value="Sign up"/>
 		</form>
 		<p></p>
 		<b>Have an account? <font size="3" color="#000099"><a

@@ -4,29 +4,21 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link rel="stylesheet"
-	href="<%=request.getContextPath()%>/resources/css/login.css">
 <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/login.css">
-<title>Insert title here</title>
+<title>Login</title>
 </head>
 <body>
-	<div class="center" align="center">
+	<div align="center">
 		<center>
 			<h1>UNSW Book</h1>
 		</center>
 		<p></p>
-		<form name="doLogin" action="<%=request.getContextPath()%>/user/login"
-			method="post">
-			<input class="text" type="text" id="username" name="username"
-				placeholder="Username" required>
+		<form name="doLogin" action="<%=request.getContextPath()%>/user/login" method="post">
+			<input class="text" type="text" id="username" name="username" placeholder="Username" required>
 			<p></p>
-			<input class="text" type="password" id="password" name="password"
-				placeholder="Password" required>
+			<input class="text" type="password" id="password" name="password" placeholder="Password" required>
 			<p></p>
-			<p></p>
-			<input type="submit" name="submit"
-				style="width: 200px; height: 35px padding-left:5px;"
-				class="signbutton" value="Log in" />
+			<input type="submit" name="submit" class="signbutton" value="Log in" />
 		</form>
 		<p></p>
 		<b>Don't have an account? <font size="3" color="#000099"><a

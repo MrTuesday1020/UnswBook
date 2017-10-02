@@ -5,52 +5,56 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>Index</title>
+<link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/page.css">
 </head>
 <body>
-	<div>
-		<a href="<%=request.getContextPath()%>/user/profile">Profile</a>
-		<a href="<%=request.getContextPath()%>/user/notice">Notice</a>
-		<a href="<%=request.getContextPath()%>/user/post">Post</a>
-	</div>
-	
-	<div>
-		<a href="<%=request.getContextPath()%>/user/toAdvSearch">Advanced Search</a>
-	</div>
-
-	<div>
-		<form action="<%=request.getContextPath()%>/user/basicSearch" method="post">
-			<input type="text" name="keywords" placeholder="search by usernames"required>
-			<input type="submit" value="Search Users">
-		</form>
-	</div>
-
-	<c:forEach items="${messages}" var="message">
-		<div style="margin-top: 40px;">
-			<div>${message.id}</div>
-			<div
-				onclick="javascript:location.href='<%=request.getContextPath()%>/user/userProfile?id=${message.userid}'">
-				<img
-					src="<%=request.getContextPath()%>/resources/userPhotos/${message.photo}"
-					height="42" width="42" /> ${message.username} ${message.time}
+<%@ include file="head.jsp" %>
+<c:forEach items="${messages}" var="message">
+	<div class="main">
+		<div id="out_layer"  class="content">
+		
+			<div id="top_layer">
+				<div id="top_image">
+				 	<div onclick="javascript:location.href='<%=request.getContextPath()%>/user/userProfile?id=${message.userid}'">
+					<img src="<%=request.getContextPath()%>/resources/userPhotos/${message.photo}" height="120px" width="120px" />
+					</div>
+				</div>
+				<span id="top_info">
+                			<p style="padding-left:10%; padding-top: 20px;"> ${message.username}</p>
+                			<p style="padding-left:10%; padding-top: 20px;"> ${message.time}</p>
+            		</span>
 			</div>
+			
 			<c:if test="${not empty message.image}">
-				<div>
-					<img
-						src="<%=request.getContextPath()%>/resources/messageImgs/${message.image}"
-						height="42" width="42" />
+				<div id="middle_layer">
+					<img src="<%=request.getContextPath()%>/resources/messageImgs/${message.image}" height="42" width="42" />
 				</div>
 			</c:if>
-			<div>${message.text}</div>
-			<div>${message.likes}</div>
+			
+			<div id="text_layer">
+				<div>${message.text}</div>
+        		</div>
+			
+			<div id="like_layer">
 			<c:if test="${message.isliked == 0}">
-				<a href="<%=request.getContextPath()%>/user/like?id=${message.id}">Like</a>
+				<a href="<%=request.getContextPath()%>/user/like?id=${message.id}">
+					<div class="heart" id="like3" rel="like"></div>Like
+				</a>
+				<div class="likeCount" id="likeCount3" style="padding-left:42px; padding-top: 16px;"> ${message.likes}</div>
+				
 			</c:if>
 			<c:if test="${message.isliked == 1}">
-				<a href="<%=request.getContextPath()%>/user/dislike?id=${message.id}">Dislike</a>
+				<a href="<%=request.getContextPath()%>/user/dislike?id=${message.id}">
+					<div class="heart" id="like3" rel="like"></div>Dislike
+				</a>
+				<div class="likeCount" id="likeCount3" style="padding-left:42px; padding-top: 16px;"> ${message.likes}</div>
 			</c:if>
+			</div>
+			
 		</div>
-	</c:forEach>
+	</div>
+</c:forEach>
 
 </body>
 </html>

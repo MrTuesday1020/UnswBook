@@ -5,27 +5,39 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>UserProfile</title>
+<link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/profile.css">
 </head>
 <body>
-	<div>Photo: <img src="<%=request.getContextPath()%>/resources/userPhotos/${user.photo}" height="42" width="42"/></div>
-	<div>Username: ${user.username}</div>
-	<div>Email: ${user.email}</div>
-	<div>Name: ${user.name}</div>
-	<c:if test="${user.gender eq 'm'}"><div>Gender: Male</div></c:if>
-	<c:if test="${user.gender eq 'f'}"><div>Gender: Female</div></c:if>
-	<div>BoB: ${user.dob}</div>
-	
-	<a href="<%=request.getContextPath()%>/user/index">Home</a>
-	
-	<c:if test="${user.friendstatus == 0}">
-		<a href="<%=request.getContextPath()%>/user/addFriend?id=${user.id}">Add</a>
+<%@ include file="head.jsp" %>
+ <div class="main">
+  <div id="out_layer" class="position">
+   <div id="photo_layer">
+    <img src="<%=request.getContextPath()%>/resources/userPhotos/${user.photo}" height="200" width="200"/>
+    <p></p>
+    <p></p>
+    <p></p>
+    	<c:if test="${user.friendstatus == 0}">
+		<a href="<%=request.getContextPath()%>/user/addFriend?id=${user.id}">
+		<input type="button" name="add" class="signbutton" value="Add Friend"></a>
 	</c:if>
 	<c:if test="${user.friendstatus == 1}">
 		<span>request sent!</span>
 	</c:if>
 	<c:if test="${user.friendstatus == 2}">
-		<a href="<%=request.getContextPath()%>/user/deleteFriend?id=${user.id}">Delete</a>
+		<a href="<%=request.getContextPath()%>/user/deleteFriend?id=${user.id}">
+		<input type="button" name="delete" class="signbutton" value="Delete Friend"></a>
 	</c:if>
+   </div>
+   
+   <span id="info_layer">
+	<p>Username: ${user.username}</p>
+	<p>Email: ${user.email}</p>
+	<p>Name: ${user.name}</p>
+	<c:if test="${user.gender eq 'm'}"><p>Gender: Male</p></c:if>
+	<c:if test="${user.gender eq 'f'}"><p>Gender: Female</p></c:if>
+	<p>BoB: ${user.dob}</p>
+	<p></p>
+	</span>
 </body>
 </html>

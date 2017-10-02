@@ -7,28 +7,30 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Profile</title>
  <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/styles.css">
- <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/profile.css">
 </head>
 <div class="header">
     <%--<font size="100">UNSW BOOK</font>--%>
     <div class="block">
-        <a href="page.jsp">
-            UNSWBOOK
-        </a>
+    		<a href="<%=request.getContextPath()%>/user/index">UNSWBOOK</a>
     </div>
-    <a size="" class="button" href='search.jsp'style="padding-right:30px;" >
-        <img src="image/find.png" width="60" height="50" alt="find">
+    <a size="" class="button" href="<%=request.getContextPath()%>/user/toAdvSearch" style="padding-right:30px;" >
+        <img class="image" src="<%=request.getContextPath()%>/resources/images/search.jpeg" >
     </a>
-    <a class="button" href='notification.jsp' style="padding-right:10px;" >
-        <img src="image/notification.png" width="70" height="50" alt="notification">
+    <a class="button" href="<%=request.getContextPath()%>/user/notice" style="padding-right:10px;" >
+        <img class="image" src="<%=request.getContextPath()%>/resources/images/notice.jpeg">
     </a>
-    <a class="button" href='profile.jsp'  style="padding-right:10px; ">
-        <img src="image/profile.png" alt="profile">
+    <a class="button" href="<%=request.getContextPath()%>/user/profile" style="padding-right:10px">
+        <img class="image" src="<%=request.getContextPath()%>/resources/images/user.jpeg">
     </a>
-    <!-- hidden input tag to identify this form action as search -->
-    <input  type="hidden" name="action"  value="search"> </input>
-    <input class="search" type="text" name="content" size="20" style="padding-left:5px;"  placeholder = "Search"> </input>
-    <%--<input type="submit" value="search" class="searchbutton"></input>--%>
+    <a class="button" href="<%=request.getContextPath()%>/user/post" style="padding-right:10px">
+    		 <img class="image" src="<%=request.getContextPath()%>/resources/images/post.png">
+    	</a>
+    
+	<form action="<%=request.getContextPath()%>/user/basicSearch" method="post">
+	    <!-- hidden input tag to identify this form action as search -->
+		<!-- <input  type="hidden" name="action"  value="search"> </input> -->
+		<input class="search" type="text" name="keywords" size="20" placeholder="search by username" required>
+	</form>
 </div>
 </body>
 </html>

@@ -6,22 +6,18 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Change Password</title>
 <link rel="stylesheet"
-	href="<%=request.getContextPath()%>/resources/css/login.css">
+	href="<%=request.getContextPath()%>/resources/css/profile.css">
 </head>
 <body>
-	<div class="center" align="center">
-		<form name="changePwd"
-			action="<%=request.getContextPath()%>/user/changePwd" method="post">
+<%@ include file="head.jsp" %>
+	<div class="div_layer" align="center">
+		<form name="changePwd" action="<%=request.getContextPath()%>/user/changePwd" method="post">
 			<p></p>
-			<input type="password" class="text" id="password" name="password"
-				placeholder="New Password" required>
+			<input type="password" class="text" id="password" style="width:60%" name="password" placeholder="New Password" required>
 			<p></p>
-			<input type="password" class="text" id="conPassword"
-				name="conPassword" placeholder="Comfirm New Password" required>
+			<input type="password" class="text" id="conPassword" style="width:60%" name="conPassword" placeholder="Comfirm New Password" required>
 			<p></p>
-			<br> <input type="submit" id="changePwd"
-				style="width: 200px; height: 35px padding-left:5px;"
-				class="signbutton" value="Change Password" />
+			<br> <input type="submit" id="changePwd" class="signbutton" style="width:200px" value="Change Password" />
 			<p></p>
 		</form>
 	</div>
