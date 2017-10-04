@@ -9,20 +9,26 @@
 <script class="jsbin" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.0/jquery-ui.min.js"></script>
 
 <script src="<%=request.getContextPath()%>/resources/js/main.js"></script>
-<title>Insert title here</title>
+<title>Post</title>
+<link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/profile.css">
 </head>
 <body>
-
-<form name="postMessage"
+<%@ include file="head.jsp" %>	
+<div class="main">
+ <div id="out_layer" class="position">
+  <div id="change_layer">
+   <form name="postMessage"
 			action="<%=request.getContextPath()%>/user/postMessage" method="post" enctype="multipart/form-data">
-			<input class="text" type="text" id="text" name="text"
-				placeholder="text" >
-			<p></p>
-			
-			<input type='file' onchange="readURL(this);" name="image"/>
-    			<img id="blah" src="#" alt="your image" height="42" width="42"/>
-			<input type="submit" value="Post" />
-		</form>
-
+	<div id="image_layer" style="height:160px; width:160px">
+	 <img id="blah" src="#" height="160px" width="160px"/>
+	</div>
+	<input type='file' id="left" style="left:10px;top:200px;font-size:16px" onchange="readURL(this);" name="image"/>
+	<p></p>
+	<input type="submit" id="left" style="left:10px;font-size:14px;top:20px" class="signbutton" value="Post" />
+	<textarea rows="5" cols="40" class="text" type="text" id="text" name="text" style="margin-left:10%;width:50%;height:200px" placeholder="text" required></textarea>
+   </form>
+  </div>
+ </div>
+</div>
 </body>
 </html>

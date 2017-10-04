@@ -45,7 +45,7 @@
 				<div id="image_layer">
 					<img id="blah" src="#" height="380px" width="380px"/>
 				</div>
-				<input type='file' id="left" style="left:400px;top:100px;font-size:16px" onchange="readURL(this);" name="photo"/>
+				<input type='file' id="left" style="left:400px;top:100px;font-size:16px" onchange="readURL(this);" name="photo" required/>
 				<p></p>
 				<input type="submit" id="left" style="left:420px;font-size:14px" class="signbutton" value="Submit" />
 			</form>

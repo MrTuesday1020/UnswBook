@@ -1,0 +1,64 @@
+.message{
+	font-size: 130%;
+	margin: 10px auto;
+	width: 600px;
+	background-color: white;
+	padding: 20px;
+}
+
+.top{
+	height: 80px;
+	width: 600px;
+	margin-bottom: 20px;
+}
+
+.top .photo{
+	float: left;
+	height: 80px;
+	width: 80px;
+}
+
+.top .photo img{
+	height: 80px;
+	width: 80px;
+}
+
+.top .info{
+	margin-left: 20px;
+	float: left;
+	width: 350px;
+}
+
+.image{
+	margin-bottom: 20px;
+}
+
+.image img{
+	width: 100%;
+}
+
+.text{
+	margin-bottom: 20px
+}
+
+.like{
+	height: 30px
+}
+
+.like .image img{
+	float: left;
+	width: 30px;
+	height: 30px
+}
+
+.like .number{
+	padding-top: 6px;
+	margin-left: 10px;
+	float: left;
+	font-size: 80%;
+}
+
+
+
+
+

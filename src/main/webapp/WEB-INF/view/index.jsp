@@ -6,55 +6,63 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Index</title>
-<link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/page.css">
+<link rel="stylesheet"
+	href="<%=request.getContextPath()%>/resources/css/index.css">
 </head>
 <body>
-<%@ include file="head.jsp" %>
-<c:forEach items="${messages}" var="message">
-	<div class="main">
-		<div id="out_layer"  class="content">
-		
-			<div id="top_layer">
-				<div id="top_image">
-				 	<div onclick="javascript:location.href='<%=request.getContextPath()%>/user/userProfile?id=${message.userid}'">
-					<img src="<%=request.getContextPath()%>/resources/userPhotos/${message.photo}" height="120px" width="120px" />
-					</div>
+	<%@ include file="head.jsp"%>
+	<c:forEach items="${messages}" var="message">
+		<div class="message">
+			<div class="top">
+				<div class="photo"
+					onclick="javascript:location.href='<%=request.getContextPath()%>/user/userProfile?id=${message.userid}'">
+					<img
+						src="<%=request.getContextPath()%>/resources/userPhotos/${message.photo}">
 				</div>
-				<span id="top_info">
-                			<p style="padding-left:10%; padding-top: 20px;"> ${message.username}</p>
-                			<p style="padding-left:10%; padding-top: 20px;"> ${message.time}</p>
-            		</span>
-			</div>
-			
-			<c:if test="${not empty message.image}">
-				<div id="middle_layer">
-					<img src="<%=request.getContextPath()%>/resources/messageImgs/${message.image}" height="42" width="42" />
+				<div class="info">
+					<p
+						onclick="javascript:location.href='<%=request.getContextPath()%>/user/userProfile?id=${message.userid}'">${message.username}</p>
+					<p style="font-size:80%">${message.time} ago</p>
 				</div>
-			</c:if>
-			
-			<div id="text_layer">
-				<div>${message.text}</div>
-        		</div>
-			
-			<div id="like_layer">
-			<c:if test="${message.isliked == 0}">
-				<a href="<%=request.getContextPath()%>/user/like?id=${message.id}">
-					<div class="heart" id="like3" rel="like"></div>Like
-				</a>
-				<div class="likeCount" id="likeCount3" style="padding-left:42px; padding-top: 16px;"> ${message.likes}</div>
-				
-			</c:if>
-			<c:if test="${message.isliked == 1}">
-				<a href="<%=request.getContextPath()%>/user/dislike?id=${message.id}">
-					<div class="heart" id="like3" rel="like"></div>Dislike
-				</a>
-				<div class="likeCount" id="likeCount3" style="padding-left:42px; padding-top: 16px;"> ${message.likes}</div>
-			</c:if>
 			</div>
-			
-		</div>
-	</div>
-</c:forEach>
 
+			<c:if test="${not empty message.image}">
+				<div class="image">
+					<img
+						src="<%=request.getContextPath()%>/resources/messageImgs/${message.image}">
+				</div>
+			</c:if>
+
+			<c:if test="${not empty message.text}">
+				<div class="text">
+					<p>${message.text}</p>
+				</div>
+			</c:if>
+
+			<div class="like">
+				<c:if test="${message.isliked == 1}">
+					<div class="image"
+						onclick="javascript:location.href='<%=request.getContextPath()%>/user/dislike?id=${message.id}'">
+						<img src="<%=request.getContextPath()%>/resources/images/dislike.jpeg">
+					</div>
+				</c:if>
+				<c:if test="${message.isliked == 0}">
+					<div class="image"
+						onclick="javascript:location.href='<%=request.getContextPath()%>/user/like?id=${message.id}'">
+						<img src="<%=request.getContextPath()%>/resources/images/like.jpeg">
+					</div>
+				</c:if>
+				<c:if test="${message.likes == 0}">
+					<div class="number">${message.likes} like</div>
+				</c:if>
+				<c:if test="${message.likes == 1}">
+					<div class="number">${message.likes} like</div>
+				</c:if>
+				<c:if test="${message.likes != 1 and message.likes != 0}">
+					<div class="number">${message.likes} likes</div>
+				</c:if>
+			</div>
+		</div>
+	</c:forEach>
 </body>
 </html>

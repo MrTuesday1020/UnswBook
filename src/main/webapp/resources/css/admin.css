@@ -1,0 +1,52 @@
+* {
+	margin: 0;
+	font-size: 100%;
+	font-family: Arial;
+}
+
+body {background-color: #F8F8F8 }
+
+.table-a table {
+	border:1px solid black;
+	padding:8px;
+	background-color: #ffffff;
+	margin:10px;
+}
+
+.signbutton {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    outline: none;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    background: #2296F1;
+    color: #ffffff;
+    font-size: 16px;
+    border: solid 1px #2296F1; 
+    border-right:0px;
+    border-top-right-radius: 5px 5px;
+    border-bottom-right-radius: 5px 5px;
+    border-bottom-left-radius: 5px 5px;
+    border-top-left-radius: 5px 5px;
+    	width: 200px; 
+	height: 35px; 
+	padding-left:5px;
+}
+
+.requestConfirm{
+	padding:5px 10px;
+	float:right;
+	background: #2296F1;
+	color: #ffffff;
+	border-right:0px;
+    border-top-right-radius: 5px 5px;
+    border-bottom-right-radius: 5px 5px;
+    border-bottom-left-radius: 5px 5px;
+    border-top-left-radius: 5px 5px;
+}
+
+.requestConfirm:hover {
+	background: #5DADE2;
+	transition: background-color 0.3s linear;
+}

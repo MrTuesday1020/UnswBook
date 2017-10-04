@@ -19,7 +19,7 @@
 				</tr>
 				<tr>
 					<td>Name:</td>
-					<td><input class="text" type="text" id="name" name="name" value="${userSession.name}"></td>
+					<td><input class="text" type="text" id="name" name="name" value="${userSession.name}" required></td>
 				</tr>
 				<tr>
 					<td>Gender:</td>
@@ -30,7 +30,7 @@
 				</tr>
 				<tr>
 					<td>Birthday:</td>
-					<td><input class="text" type="text" id="dob" name="dob" placeholder="YYYY-MM-DD" value="${userSession.dob}">
+					<td><input class="text" type="text" id="dob" name="dob" placeholder="YYYY-MM-DD" value="${userSession.dob}" required>
 					<td>
 				</tr>
 			</table>

@@ -5,49 +5,63 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>Report</title>
+<link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/report.css"> 
 </head>
 <body>
-	<div>
-		<div><img src="<%=request.getContextPath()%>/resources/userPhotos/${user.photo}" height="42" width="42"/></div>
-		<div>Id: ${user.id}</div>
-		<div>Username: ${user.username}</div>
-		<div>Email: ${user.email}</div>
-		<div>Name: ${user.name}</div>
-		<c:if test="${user.gender eq 'm'}"><div>Gender: Male</div></c:if>
-		<c:if test="${user.gender eq 'f'}"><div>Gender: Female</div></c:if>
-		<div>Birth: ${user.dob}</div>
-		<div>Time: ${user.time}</div>
+<div class="main">
+	<div id="out_layer" class="position">
+		<div id="photo_layer">
+			<img src="<%=request.getContextPath()%>/resources/userPhotos/${user.photo}" height="200" width="200"/>
+			<p></p><p></p><p></p><p></p>
+			<a href="<%=request.getContextPath()%>/admin/index">
+			<input type="button" name="add" class="signbutton" value="Return To Search Page"></a>
+		</div>
+		<span id="info_layer">
+		<p>UserID: ${user.id}</p>
+		<p>Username: ${user.username}</p>
+		<p>Email: ${user.email}</p>
+		<p>Name: ${user.name}</p>
+		<c:if test="${user.gender eq 'm'}"><p>Gender: Male</p></c:if>
+		<c:if test="${user.gender eq 'f'}"><p>Gender: Female</p></c:if>
+		<p>Birth: ${user.dob}</p>
+		<p>Registered: ${user.time}</p>
+	</span>
 	</div>
-	<div>
-		<c:forEach items="${messages}" var="message">
-			<div>
-				<span> MessageID: </span>
-				<c:out value="${message.id}"></c:out>
-				<span> UserId: </span>
-				<c:out value="${message.userid}"></c:out>
-				<span> Text: </span>
-				<c:out value="${message.text}"></c:out>
-				<span> Image: </span>
-				<c:out value="${message.image}"></c:out>
-				<span> Time: </span>
-				<c:out value="${message.time}"></c:out>
-			</div>
-		</c:forEach>
-	</div>
-	<div>
-		<c:forEach items="${friends}" var="friend">
-			<div>
-				<span> friendID: </span>
-				<c:out value="${friend.id}"></c:out>
-				<span> Username: </span>
-				<c:out value="${friend.username}"></c:out>
-				<span> Name: </span>
-				<c:out value="${friend.name}"></c:out>
-				<span> They became friends <c:out value="${friend.time}"></c:out> ago </span>
-				
-			</div>
-		</c:forEach>
-	</div>
+	<div class='table-a'>
+	<table style="position:relative; left:15%; top:100px; width: 70%" cellspacing="30"  >
+	<tr>
+		<th align="left">MessageID</th>
+		<th align="left">UserId</th>
+		<th align="left">Text</th>
+		<th align="left">Image</th>
+		<th align="left">Time</th>
+	</tr>
+	<c:forEach items="${messages}" var="message">
+	<tr>
+		<td><c:out value="${message.id}"></c:out></td>
+		<td><c:out value="${message.userid}"></c:out></td>
+		<td><c:out value="${message.text}"></c:out></td>
+		<td><c:out value="${message.image}"></c:out></td>
+		<td><c:out value="${message.time}"></c:out></td>
+	</tr>
+	</c:forEach>
+	</table>
+	<table style="position:relative; left:15%; top:100px; width: 70%" cellspacing="30"  >
+	<tr>
+		<th align="left">FriendID</th>
+		<th align="left">Username</th>
+		<th align="left">Name</th>
+		<th align="left">Time</th>
+	</tr>
+	<c:forEach items="${friends}" var="friend">
+	<tr>
+		<td><c:out value="${friend.id}"></c:out></td>
+		<td><c:out value="${friend.username}"></c:out></td>
+		<td><c:out value="${friend.name}"></c:out></td>
+		<td><span> They became friends <c:out value="${friend.time}"></c:out> ago </span></td>
+	</tr>
+	</c:forEach>
+</div>
 </body>
 </html>

@@ -9,7 +9,6 @@ import java.util.Date;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import unswbook.dao.UserDao;
-import unswbook.model.Message;
 import unswbook.model.User;
 import unswbook.service.UserService;
 
@@ -86,29 +85,61 @@ public class UserServiceImpl implements UserService{
 		long diffminutes = difference / (60 * 1000);
 		long diffseconds= difference / 1000;
 		if ( 1 <= diffyears) {
-			results = diffyears + " year(s)";
+			if (1 < diffyears) {
+				results = diffyears + " years";
+			}
+			else {
+				results = "one year";
+			}
 		}
 		else if ( 1 <= diffmonths) {
-			results = diffmonths + " month(s)";
+			if (1 < diffmonths) {
+				results = diffmonths + " months";
+			}
+			else {
+				results = "one month";
+			}
 		}
 		else if ( 1 <= diffweeks) {
-			results = diffweeks + " week(s)";
+			if (1 < diffweeks) {
+				results = diffweeks + " weeks";
+			}
+			else {
+				results = "one week";
+			}
 		}
 		else if ( 1 <= diffdays) {
-			results = diffdays + " day(s)";
+			if (1 < diffdays) {
+				results = diffdays + " days";
+			}
+			else {
+				results = "one day";
+			}
 		}
 		else if ( 1 <= diffhours) {
-			results = diffhours + " hour(s)";
+			if (1 < diffhours) {
+				results = diffhours + " hours";
+			}
+			else {
+				results = "one hour";
+			}
 		}
 		else if ( 1 <= diffminutes) {
-			results = diffminutes + " minute(s)";
+			if (1 < diffminutes) {
+				results = diffminutes + " minutes";
+			}
+			else {
+				results = "one minute";
+			}
 		}
 		else if ( 1 <= diffseconds) {
-			results = diffseconds + " second(s)";
+			if (1 < diffseconds) {
+				results = diffseconds + " seconds";
+			}
+			else {
+				results = "one second";
+			}
 		}
-		
-		
-		
 		return results;
 	}
 

@@ -1,7 +1,5 @@
 @charset "UTF-8";
 
-
-
 /*-----like css------*/
 .heart {
     background: url(../images/web_heart_animation.png);
@@ -22,8 +20,6 @@
     font-size: 16px;
     color: #999999
 }
-
-
 
 @-webkit-keyframes heartBlast {
     0% {background-position: left;}
@@ -51,7 +47,7 @@ animation-timing-function: steps(28);
 #out_layer {
     line-height:100px;
     background-color:white;
-    height:700px;
+    /* height:700px; */
     width:700px;
     float: left;
     padding:5px;
@@ -59,7 +55,7 @@ animation-timing-function: steps(28);
 
 #top_layer{
     background-color:white;
-    height:120px;
+   /*  height:120px; */
     width:700px;
     float: left;
     padding:0px;
@@ -67,7 +63,7 @@ animation-timing-function: steps(28);
 #top_image{
     line-height: 100px;
     background-color:grey;
-    height:120px;
+    /* height:120px; */
     width:120px;
     float: left;
     padding:0px;
@@ -75,7 +71,7 @@ animation-timing-function: steps(28);
 #top_info{
     line-height:20px;
     background-color:white;
-    height:120px;
+    /* height:120px; */
     width:550px;
     float: left;
     padding:0px;
@@ -84,7 +80,7 @@ animation-timing-function: steps(28);
     line-height:20px;
     background-color:grey;
 
-    height: 580px;
+  /*   height: 580px; */
     width: 700px;
     float: none;
     padding:0px;
@@ -92,7 +88,7 @@ animation-timing-function: steps(28);
 #like_layer{
     line-height:20px;
     background-color:white;
-    height:5%;
+    /* height:5%; */
     width:100%;
     float: none;
     padding:0px;
@@ -100,7 +96,7 @@ animation-timing-function: steps(28);
 #text_layer{
     line-height:20px;
     background-color:white;
-    height:100px;
+   /*  height:100px; */
     width:100%;
     float: none;
     padding:0px;

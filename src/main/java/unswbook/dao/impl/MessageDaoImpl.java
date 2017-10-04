@@ -95,7 +95,7 @@ public class MessageDaoImpl implements MessageDao {
 				message.setTime(rs.getString("Time"));
 				message.setUsername(rs.getString("Username"));
 				message.setPhoto(rs.getString("Photo"));
-				message.setIsliked(rs.getInt("Likes"));
+				message.setLikes(rs.getInt("Likes"));
 				messages.add(message);
 			}
 			return messages;

@@ -53,13 +53,13 @@
    </span>
 
    <a href="<%=request.getContextPath()%>/user/edit">
-	<input type="submit" name="edit" class="signbutton" value="Edit Profile"></a>
+	<input type="submit" name="edit" class="signbutton" style="margin-left:7%" value="Edit Profile"></a>
    <a href="<%=request.getContextPath()%>/user/password">
-	<input type="submit" name="change_password" class="signbutton" value="Change Password" /></a>
+	<input type="submit" name="change_password" class="signbutton" value="Change Password"/></a>
    <a href="<%=request.getContextPath()%>/user/photo">
-	<input type="submit" name="change_photo" class="signbutton" value="Change Photo" /></a>
+	<input type="submit" name="change_photo" class="signbutton" value="Change Photo"/></a>
    
-  </div>
  </div>
+</div>
 </body>
 </html>

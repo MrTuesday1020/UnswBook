@@ -2,7 +2,6 @@ package unswbook.service;
 
 import java.util.ArrayList;
 
-import unswbook.model.Message;
 import unswbook.model.User;
 
 public interface UserService {

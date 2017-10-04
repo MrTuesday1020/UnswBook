@@ -43,29 +43,35 @@ public class UserController {
 			if(userSession.getActive() == 1 && userSession.getStatus() == 1) {
 				userSession.setPassword(null);
 				model.put("userSession", userSession);
+				model.put("errormsg", null);
 				return "redirect:index";
 			}
 			else if(userSession.getActive() == 0 && userSession.getStatus() == 1){
+				model.put("errormsg", null);
 				return "banned";
 			}
 			else if(userSession.getActive() == 1 && userSession.getStatus() == 0) {
+				model.put("errormsg", null);
 				return "confirm";
 			}
 			else {
+				model.put("errormsg", "Username or password invalid!");
 				return "login";
 			}
 		}
 		else {
+			model.put("errormsg", "Username or password invalid!");
 			return "login";
 		}
 	}
 	
 	@RequestMapping(value="/register", method = RequestMethod.POST)
-	public String register(@ModelAttribute User user) {
+	public String register(@ModelAttribute User user, ModelMap model) {
 
 		boolean registered = userService.registerUser(user);
 		
 		if (!registered) {
+			model.put("errormsg", "Username already exists!");
 			return "register";
 		}
 		else {
@@ -80,7 +86,7 @@ public class UserController {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-			
+			model.put("errormsg", null);
 			return "confirm";
 		}
 	}
@@ -102,6 +108,11 @@ public class UserController {
 		User userSession = (User)request.getSession().getAttribute("userSession");
 
 		ArrayList<Message> messages = messageService.findAllMessagesByUserID(userSession.getId());
+		
+		for(Message m:messages) {
+			String time = userService.formatTime(m.getTime());
+			m.setTime(time);
+		}
 			
 		model.put("messages", messages);
 		
@@ -221,11 +232,11 @@ public class UserController {
 		
 		userService.addFriend(myid, userid);
 		
-		String address = userService.findFriendsByID(userid).get(0).getEmail();
+		String address = userService.findUserByID(userid).get(0).getEmail();
 		
 		Email mail = new Email();
 		try {
-			mail.sendEmail(address,"Friend Request","User " + userSession.getUsername() + " sends you a friend request!");
+			mail.sendEmail(address,"Friend Request","User " + userSession.getUsername() + " sends you a friend request! Confirm the friend by click the url:http://localhost:8080/ass2/user/confirmFriend?id=" + myid);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -309,16 +320,16 @@ public class UserController {
 		
 		userService.like(myid, messageid);
 		
-		ArrayList<User> users = userService.findUserByMessageId(messageid);
-		
-		String address = users.get(0).getEmail();
-				
-		Email mail = new Email();
-		try {
-			mail.sendEmail(address,"Cheers","User " + userSession.getUsername() + " liked your post! Go to check it!");
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+//		ArrayList<User> users = userService.findUserByMessageId(messageid);
+//		
+//		String address = users.get(0).getEmail();
+//				
+//		Email mail = new Email();
+//		try {
+//			mail.sendEmail(address,"Cheers","User " + userSession.getUsername() + " liked your post! Go to check it!");
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
 		
 		return "redirect:index";
 	}

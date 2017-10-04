@@ -4,9 +4,14 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>Enter Error</title>
+<link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/login.css">
 </head>
 <body>
-Sorry you have been BANNED by the admin!
+<div class="center" align="center">
+	<br>
+		<center>Sorry you have been BANNED by the admin!</center>
+	<br>
+</div>
 </body>
 </html>

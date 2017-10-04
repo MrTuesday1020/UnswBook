@@ -5,26 +5,31 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>Notice</title>
+<link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/admin.css"> 
 </head>
 <body>
-
-	<div>
-		Message Notice:
-		<c:forEach items="${messageNotices}" var="messageNotice">
-			<div>
-				<div>${messageNotice.username} liked ur message: ${messageNotice.messagetext}</div>
-			</div>
-		</c:forEach>
-	</div>
-
-	<div style="margin-top: 40px;">
-		Friend Request:
-		<c:forEach items="${friendNotices}" var="friendNotice">
-			<div>
-				<div>${friendNotice.username} wants to add you!<a href="<%=request.getContextPath()%>/user/confirmFriend?id=${friendNotice.id}">Confirm</a></div>
-		</c:forEach>
-	</div>
-
+<%@ include file="head.jsp" %>
+<div class='table-a'>
+<table style="position:relative; left:15%; top:100px; width: 70%" cellspacing="30"  >
+<tr>
+	<th align="left">Message Notice:</th>
+</tr>
+<c:forEach items="${messageNotices}" var="messageNotice">
+<tr>
+	<td>${messageNotice.username} liked ur message: ${messageNotice.messagetext}</td>
+</tr>
+</c:forEach>
+</table>
+<table style="position:relative; left:15%; top:100px; width: 70%" cellspacing="30"  >
+<tr>
+	<th align="left">Friend Request:</th>
+</tr>
+<c:forEach items="${friendNotices}" var="friendNotice">
+<tr>
+	<td>${friendNotice.username} wants to add you!<a class="requestConfirm" href="<%=request.getContextPath()%>/user/confirmFriend?id=${friendNotice.id}">Confirm</a></td>
+</tr>
+</c:forEach>
+</table>
 </body>
 </html>

@@ -5,15 +5,24 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>AdminUserBan</title>
+<link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/login.css">
 </head>
 <body>
+<div align="center">
+<p></p>
 	<c:if test="${not empty username}">
-		<div>${username} has been banned!</div>
+		<br><centre><font color='green'>${username} has been banned!</font></centre><br>
 	</c:if>
 	<c:if test="${empty username}">
-		<div>Ban user ${username} failed</div>
+		<br><centre><font color='red'>Ban user ${username} failed</font></centre><br>
 	</c:if>
-	<a href="<%=request.getContextPath()%>/admin/index">Index</a>
+	<p></p>
+	<p></p>
+	<a href="<%=request.getContextPath()%>/admin/findAllUsers">
+	<input type="submit"  value="Return to All User" class="signbutton" />
+	</a>
+	<p></p>
+</div>
 </body>
 </html>
