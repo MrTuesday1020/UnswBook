@@ -4,6 +4,7 @@ public class Admin {
 	
 	private Integer id;
 	private String username;
+	private String email;
 	private String password;
 	public Integer getId() {
 		return id;
@@ -22,6 +23,12 @@ public class Admin {
 	}
 	public void setPassword(String password) {
 		this.password = password;
+	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
 	}
 	
 }

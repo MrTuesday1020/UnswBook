@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.multipart.MultipartFile;
 
+import unswbook.dataduration.Dataduration;
 import unswbook.email.Email;
 import unswbook.model.Message;
 import unswbook.model.User;
@@ -347,12 +348,27 @@ public class UserController {
 	}
 	
 	@RequestMapping(value="/postMessage", method=RequestMethod.POST)
-	public String postMessage(HttpServletRequest request, @RequestParam("image") MultipartFile image, ModelMap model) throws IOException{
+	public String postMessage(HttpServletRequest request, @RequestParam("image") MultipartFile image, ModelMap model) throws Exception{
 		
 		Message message = new Message();
 		User userSession = (User)request.getSession().getAttribute("userSession");
 		Integer userid = userSession.getId();
+		String username = userSession.getUsername();
 		String text = request.getParameter("text");
+		
+		Dataduration dd = new Dataduration();
+		ArrayList<String> keywords = dd.Keywords(text);
+
+		String adminEmail = "z5092923@unsw.edu.au";
+
+		if (keywords != null) {
+			Email mail = new Email();
+			try {
+				mail.sendEmail(adminEmail, "Bully!", "User " + username + " has bully words when posting a message!");
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
 		
 		message.setUserid(userid);
 		if(!text.equals(""))

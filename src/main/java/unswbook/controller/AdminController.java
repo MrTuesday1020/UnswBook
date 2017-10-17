@@ -96,7 +96,7 @@ public class AdminController {
 	}
 	
 	@RequestMapping("/getReport")
-	public String getReport(HttpServletRequest request, ModelMap model) {
+	public String getReport(HttpServletRequest request, ModelMap model) throws Exception {
 		
 		Integer userid = Integer.valueOf(request.getParameter("id"));
 		

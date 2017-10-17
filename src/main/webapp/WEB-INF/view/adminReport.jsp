@@ -32,7 +32,7 @@
 	<table style="position:relative; left:15%; top:100px; width: 70%" cellspacing="30"  >
 	<tr>
 		<th align="left">MessageID</th>
-		<th align="left">UserId</th>
+		<th align="left">Bully words</th>
 		<th align="left">Text</th>
 		<th align="left">Image</th>
 		<th align="left">Time</th>
@@ -40,7 +40,7 @@
 	<c:forEach items="${messages}" var="message">
 	<tr>
 		<td><c:out value="${message.id}"></c:out></td>
-		<td><c:out value="${message.userid}"></c:out></td>
+		<td><c:out value="${message.bullywords}"></c:out></td>
 		<td><c:out value="${message.text}"></c:out></td>
 		<td><c:out value="${message.image}"></c:out></td>
 		<td><c:out value="${message.time}"></c:out></td>

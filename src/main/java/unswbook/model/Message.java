@@ -14,6 +14,8 @@ public class Message {
 	//Like
 	private Integer likes;
 	private Integer isliked;
+	//bully words
+	private String bullywords;
 	public Integer getId() {
 		return id;
 	}
@@ -68,6 +70,10 @@ public class Message {
 	public void setTime(String time) {
 		this.time = time;
 	}
-
-	
+	public String getBullywords() {
+		return bullywords;
+	}
+	public void setBullywords(String bullywords) {
+		this.bullywords = bullywords;
+	}
 }
