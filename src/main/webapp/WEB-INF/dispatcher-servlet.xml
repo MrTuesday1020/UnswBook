@@ -9,8 +9,8 @@
         http://www.springframework.org/schema/context/spring-context.xsd
         http://www.springframework.org/schema/mvc
         http://www.springframework.org/schema/mvc/spring-mvc.xsd">
-        
-    <mvc:annotation-driven />
+
+	<mvc:annotation-driven />
 	<mvc:resources mapping="/resources/**" location="/resources/" />
 
 	<context:annotation-config />
@@ -24,15 +24,15 @@
 	<mvc:interceptors>
 		<mvc:interceptor>
 			<mvc:mapping path="/user/*" />
-			<mvc:exclude-mapping path="/user/login"/>
-			<mvc:exclude-mapping path="/user/register"/>
-			<mvc:exclude-mapping path="/user/doconfirm"/>
+			<mvc:exclude-mapping path="/user/login" />
+			<mvc:exclude-mapping path="/user/register" />
+			<mvc:exclude-mapping path="/user/doconfirm" />
 			<bean class="unswbook.interceptor.UserInterceptor"></bean>
 		</mvc:interceptor>
-		
+
 		<mvc:interceptor>
 			<mvc:mapping path="/admin/*" />
-			<mvc:exclude-mapping path="/admin/login"/>
+			<mvc:exclude-mapping path="/admin/login" />
 			<bean class="unswbook.interceptor.AdminInterceptor"></bean>
 		</mvc:interceptor>
 	</mvc:interceptors>
@@ -42,12 +42,14 @@
 	<bean id="adminService" class="unswbook.service.impl.AdminServiceImpl" />
 	<bean id="userService" class="unswbook.service.impl.UserServiceImpl" />
 	<bean id="messageService" class="unswbook.service.impl.MessageServiceImpl" />
+	<bean id="graphService" class="unswbook.service.impl.GraphServiceImpl" />
 
 
 	<!-- Dao -->
 	<bean id="adminDao" class="unswbook.dao.impl.AdminDaoImpl" />
 	<bean id="userDao" class="unswbook.dao.impl.UserDaoImpl" />
 	<bean id="messageDao" class="unswbook.dao.impl.MessageDaoImpl" />
+	<bean id="graphDao" class="unswbook.dao.impl.GraphDaoImpl" />
 
 
 	<!-- database connection -->
@@ -63,7 +65,6 @@
 	<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
 		<property name="dataSource" ref="dataSource" />
 	</bean>
-	
 
 
 	<!-- view -->
@@ -84,12 +85,16 @@
 	<mvc:view-controller path="/login" view-name="login" />
 	<mvc:view-controller path="/register" view-name="register" />
 	<mvc:view-controller path="/user/edit" view-name="editProfile" />
-	<mvc:view-controller path="/user/profile" view-name="profile" />
-	<mvc:view-controller path="/user/password" view-name="password" />
+	<mvc:view-controller path="/user/profile"
+		view-name="profile" />
+	<mvc:view-controller path="/user/password"
+		view-name="password" />
 	<mvc:view-controller path="/user/photo" view-name="photo" />
-	<mvc:view-controller path="/user/toAdvSearch" view-name="advSearch" />
+	<mvc:view-controller path="/user/toAdvSearch"
+		view-name="advSearch" />
 	<mvc:view-controller path="/user/post" view-name="post" />
-	
+	<mvc:view-controller path="/user/graph" view-name="graph" />
+
 	<!-- admin -->
 	<mvc:view-controller path="/admin" view-name="adminLogin" />
 	<mvc:view-controller path="/admin/" view-name="adminIndex" />

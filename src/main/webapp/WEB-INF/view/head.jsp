@@ -27,6 +27,9 @@
 	</a> <a class="button" href="<%=request.getContextPath()%>/user/post"
 		style="padding-right: 10px"> <img class="image"
 		src="<%=request.getContextPath()%>/resources/images/post.png">
+	</a><a class="button" href="<%=request.getContextPath()%>/user/graph"
+		style="padding-right: 10px"> <img class="image"
+		src="<%=request.getContextPath()%>/resources/images/post.png">
 	</a>
 
 	<form action="<%=request.getContextPath()%>/user/basicSearch"

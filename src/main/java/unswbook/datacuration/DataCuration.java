@@ -1,4 +1,4 @@
-package unswbook.dataduration;
+package unswbook.datacuration;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -10,7 +10,7 @@ import java.util.List;
 
 import unsw.curation.api.tokenization.ExtractionKeywordImpl;
 
-public class Dataduration {
+public class DataCuration {
 
 	String keywords = null;
 	List<String> bullywords = null;

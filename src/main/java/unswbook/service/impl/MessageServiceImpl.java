@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import unswbook.dao.MessageDao;
 import unswbook.dao.UserDao;
-import unswbook.dataduration.Dataduration;
+import unswbook.datacuration.DataCuration;
 import unswbook.model.Message;
 import unswbook.model.User;
 import unswbook.service.MessageService;
@@ -29,7 +29,7 @@ public class MessageServiceImpl implements MessageService {
 
 		for (Message m : messages) {
 			String text = m.getText();
-			Dataduration dd = new Dataduration();
+			DataCuration dd = new DataCuration();
 			ArrayList<String> keywords = new ArrayList<String>();
 			try {
 				keywords = dd.Keywords(text);

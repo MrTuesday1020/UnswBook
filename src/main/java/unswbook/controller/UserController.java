@@ -14,13 +14,20 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.multipart.MultipartFile;
 
-import unswbook.dataduration.Dataduration;
+import com.google.gson.Gson;
+
+import unswbook.datacuration.DataCuration;
 import unswbook.email.Email;
+import unswbook.model.Edge;
+import unswbook.model.Graph;
 import unswbook.model.Message;
+import unswbook.model.Node;
 import unswbook.model.User;
+import unswbook.service.GraphService;
 import unswbook.service.MessageService;
 import unswbook.service.UserService;
 
@@ -34,6 +41,9 @@ public class UserController {
 	
 	@Autowired
 	MessageService messageService;
+	
+	@Autowired
+	GraphService graphService;
 	
 	@RequestMapping(value="/login", method = RequestMethod.POST)
 	public String login(@ModelAttribute User user, ModelMap model) {
@@ -356,7 +366,7 @@ public class UserController {
 		String username = userSession.getUsername();
 		String text = request.getParameter("text");
 		
-		Dataduration dd = new Dataduration();
+		DataCuration dd = new DataCuration();
 		ArrayList<String> keywords = dd.Keywords(text);
 
 		String adminEmail = "z5092923@unsw.edu.au";
@@ -386,5 +396,24 @@ public class UserController {
 			FileUtils.copyInputStreamToFile(image.getInputStream(), new File(imgpath, thisImage));
 		}
 		return "redirect:index";
+	}
+	
+	@RequestMapping(value="/showGraph", method=RequestMethod.GET)
+	public @ResponseBody String showGraph(HttpServletRequest request) {
+		String keyword = request.getParameter("keyword");
+		String selection = request.getParameter("selection");
+
+		ArrayList<Node> nodes = graphService.nodes(keyword, selection);
+		ArrayList<Edge> edges = graphService.edges();	
+
+		Graph graph = new Graph();
+		
+		graph.setEdges(edges);
+		graph.setNodes(nodes);
+		
+		String json = new Gson().toJson(graph);
+		System.out.println(json);
+
+		return json;
 	}
 }
